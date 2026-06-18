@@ -6,7 +6,7 @@ const interviewroute=require('./routes/interview.routes')
 
 const app=express()
 app.use(cors({
-    origin: "https://YOUR_FRONTEND.vercel.app",
+    origin: "https://interview-report-frontend-five.vercel.app",
     credentials: true
 }))
 app.use(express.json())
