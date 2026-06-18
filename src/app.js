@@ -6,10 +6,9 @@ const interviewroute=require('./routes/interview.routes')
 
 const app=express()
 app.use(cors({
-    origin: true,
+    origin: "https://YOUR_FRONTEND.vercel.app",
     credentials: true
-}));
-
+}))
 app.use(express.json())
 app.use(cookieParser())
 app.use('/api/auth',routes)

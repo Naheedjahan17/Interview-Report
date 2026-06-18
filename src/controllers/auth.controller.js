@@ -36,7 +36,12 @@ async function registerController(req,res){
         username:user.username
     },process.env.JWT_SECRETKEY)
 
-    res.cookie("token",token)
+    res.cookie("token", token, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "None",
+    maxAge: 7 * 24 * 60 * 60 * 1000
+})
 
     res.status(201).json({
         message:"user has been created succesfully",
@@ -69,7 +74,12 @@ async function loginController(req,res){
         username:user.username
     },process.env.JWT_SECRETKEY)
 
-    res.cookie("token",token)
+    res.cookie("token", token, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "None",
+    maxAge: 7 * 24 * 60 * 60 * 1000
+})
     res.status(200).json({
         message:"user Details fechted succesfully",
         user
@@ -95,7 +105,11 @@ async function logout(req,res){
     if(token){
         await blacklistmodel.create({token})
     }
-    res.clearCookie("token")
+    res.clearCookie("token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "None"
+})
 
     res.status(200).json({
         message:"user has been logged out succesfully"
