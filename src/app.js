@@ -6,7 +6,7 @@ const interviewroute=require('./routes/interview.routes')
 
 const app=express()
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: true,
     credentials: true
 }));
 
